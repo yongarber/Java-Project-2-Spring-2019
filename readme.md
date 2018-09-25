@@ -34,11 +34,12 @@ Teams have been assigned for this project as follows. They are fixed - no switch
 ## Step 2 - Review the Provided Code.
 In the starter code you have been provided, you will find a superclass called ChatterBot and a subclass called NeutralBot. You will notice that in the class header for the NeutralBot, it says that the NeutralBot *extends* ChatterBot. We will discuss this relationship - **inheritance**- in an upcoming lesson. For now, you should know that all NeutralBots objects are also ChatterBot objects, but not all ChatterBot objects are also NeutralBot objects.
 
-All ChatterBot objects have two class member variables: a list of messages that they can use to respond to others, and a ChatRoom object that they receive updates from and post responses to.
+All ChatterBot objects have two class member variables: a list of messages that they can use to respond to others, and a ChatRoom object that they receive updates from and post responses to. The also have a mood, which can potentially be affected by the things they read and post.
 
 ```java
 protected Message[] messages;
 protected final ChatRoom room;
+protected double mood = 1;
 ```
 
 NeutralBot class instances should read and post responses to messages based on the valence of their mood (negative:0; neutral:1; positive:2). When created, an instance of a NeutralBot starts out close to a neutral valence with some small variation (+/- 0.125). The mood represents the probability that a NeutralBot will respond to a message, and if it does, whether that response will be negative, neutral, or positive.
