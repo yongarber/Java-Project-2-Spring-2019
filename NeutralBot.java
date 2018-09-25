@@ -4,8 +4,6 @@ import java.util.Random;
  */
 public class NeutralBot extends ChatterBot{
 
-  private double mood = 1;
-
   /**
    * A constructor for a bot that initially only responds with neutral tweets about topics, but has a moderate positive or negative bias. As its bias increases, it begins to post positive or negative comments.
    * @param  messages Neutral messages

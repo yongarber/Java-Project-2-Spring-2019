@@ -4,6 +4,7 @@ public class ChatterBot{
 
   protected Message[] messages;
   protected final ChatRoom room;
+  protected double mood = 1;
 
   public ChatterBot(Message[] messages, ChatRoom room){
      this.messages = messages;
@@ -19,5 +20,9 @@ public class ChatterBot{
   }
 
   public void post(){
+  }
+
+  public double getMood(){
+    return mood;
   }
 }
