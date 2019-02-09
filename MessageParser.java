@@ -7,6 +7,8 @@ public class MessageParser{
    * @param  filename the name of a comma-separated value (.csv) file in the local directory
    * @return          An array of parsed Message objects
    */
+   String filename = "full-corpus" // I dont know if this is needed
+
   public static Message[] parseMessages(String filename) throws Exception {
     Message[] messages = null;
 
