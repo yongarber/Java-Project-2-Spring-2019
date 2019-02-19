@@ -63,6 +63,16 @@ public class NeutralBot extends ChatterBot{
    */
   public void post(){
     Message reply = null;
+    while ((mood > 0.5) && (mood < 1.5)){
+      //search for tweet with nuetral and take its text to post
+      return textToPost();
+    }
+    if(mood < 0.5){
+      // search for tweet with negative and take its text to post
+    }
+    if(mood > 1.5){
+      // search for tweet with positive and take its text to post
+    }
     /*
     Here is where you will add code that chooses from one of the messages to respond with. That message will then be posted to the chatroom.
      */
