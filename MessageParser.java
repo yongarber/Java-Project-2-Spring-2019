@@ -16,11 +16,25 @@ public class MessageParser{
   public static Message[] parseMessages(String filename) throws Exception {
     Message[] messages = new Message[5114];
     Scanner reader = new Scanner(new File(filename));
+    int temp = 1;
+    String S1 = "\"positive\"";
+    String S2 = "\"negative\"";
+    String S3 = "\"neutral\"";
+    String[] strl= new String[5];
     while (reader.hasNext()){
-        int i =0;
+    	int i =0;
         String str = reader.nextLine();
-        System.out.println(str);
-        messages[i]=(reader.nextLine());
+        //str.replaceAll("\"", "");
+        strl= str.split(",");
+        if(strl[1].equals(S1)){
+          temp=2;}
+        if(strl[1].equals(S2)){
+          temp=0;}
+        if(strl[1].equals(S3)){
+          temp=1;}
+        Message msg = new Message(strl[0],temp,strl[2],strl[3],strl[4]);
+        messages[i] = msg;
+        //mess[i]=(reader.nextLine()); //We have issue with converting string to Message!
         i+=1;
     }
     /*
@@ -28,5 +42,6 @@ public class MessageParser{
      */
 
     return messages;
-  }
+
+}
 }
