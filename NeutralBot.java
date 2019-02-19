@@ -69,20 +69,20 @@ public class NeutralBot extends ChatterBot{
     while(msg[input]!=1){
       int input = rand.nextDouble()*5114;
     }
-      return msg[input]();
+      return msg[1]();
     }
     if(mood < 0.5){
       while(msg[input]!=0){
         int input = rand.nextDouble()*5114;
       }
-        return msg[input]();
+        return msg[1]();
       // search for tweet with negative and take its text to post
     }
     if(mood > 1.5){
       while(msg[input]!=2){
         int input = rand.nextDouble()*5114;
       }
-        return msg[input]();
+        return msg[1]();
       // search for tweet with positive and take its text to post
     }
     /*
