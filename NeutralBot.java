@@ -63,14 +63,26 @@ public class NeutralBot extends ChatterBot{
    */
   public void post(){
     Message reply = null;
+    int input = rand.nextDouble()*5114;
     while ((mood > 0.5) && (mood < 1.5)){
       //search for tweet with nuetral and take its text to post
-      return textToPost();
+    while(msg[input]!=1){
+      int input = rand.nextDouble()*5114;
+    }
+      return msg[input]();
     }
     if(mood < 0.5){
+      while(msg[input]!=0){
+        int input = rand.nextDouble()*5114;
+      }
+        return msg[input]();
       // search for tweet with negative and take its text to post
     }
     if(mood > 1.5){
+      while(msg[input]!=2){
+        int input = rand.nextDouble()*5114;
+      }
+        return msg[input]();
       // search for tweet with positive and take its text to post
     }
     /*
