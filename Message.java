@@ -49,6 +49,10 @@ public class Message{
     public String getTopic(){
       return this.topic;
     }
+    
+    public String getTweetText(){
+      return this.tweetText;
+    }
 
     /**
      * Get the content of this message as a String

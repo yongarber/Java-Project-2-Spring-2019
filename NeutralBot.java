@@ -66,21 +66,27 @@ public class NeutralBot extends ChatterBot{
     Random input = new Random();
     int in = input.nextInt()*5115;
     Message[] msg = new Message[5114];
-    msg = MessageParser.parseMessages("full-corpus.csv");
+    try{
+      msg = MessageParser.parseMessages("full-corpus.csv");
+    }
+    catch(Exception e){
+      System.out.println("ERROR");
+    }
+  // I dont know if the try and catch work here or not!!!!!
     while ((mood > 0.5) && (mood < 1.5)){
       //search for tweet with nuetral and take its text to post
     while(!msg[in].equals(1)){
       int inp = input.nextInt()*5115;
       in = inp;
     }
-      System.out.println(msg[1]);
+      System.out.println(msg[in].getTweetText());
     }
     if(mood < 0.5){
       while(!msg[in].equals(0)){
         int inpu = input.nextInt()*5115;
         in = inpu;
       }
-        System.out.println(msg[1]);
+        System.out.println(msg[in].getTweetText());
       // search for tweet with negative and take its text to post
     }
     if(mood > 1.5){
@@ -88,7 +94,7 @@ public class NeutralBot extends ChatterBot{
         int put = input.nextInt()*5115;
         in = put;
       }
-        System.out.println(msg[1]);
+        System.out.println(msg[in].getTweetText());
       // search for tweet with positive and take its text to post
     }
     /*
