@@ -75,26 +75,26 @@ public class NeutralBot extends ChatterBot{
   // I dont know if the try and catch work here or not!!!!!
     while ((mood > 0.5) && (mood < 1.5)){
       //search for tweet with nuetral and take its text to post
-    while(!msg[in].equals(1)){
+    while(msg[in].getSentiment() != 1){
       int inp = input.nextInt()*5115;
       in = inp;
     }
-      System.out.println(msg[in].getTweetText());
+      reply = msg[in];
     }
     if(mood < 0.5){
-      while(!msg[in].equals(0)){
+      while(msg[in].getSentiment() != 1){
         int inpu = input.nextInt()*5115;
         in = inpu;
       }
-        System.out.println(msg[in].getTweetText());
+        reply = msg[in];
       // search for tweet with negative and take its text to post
     }
     if(mood > 1.5){
-      while(!msg[in].equals(2)){
+      while(msg[in].getSentiment() != 1){
         int put = input.nextInt()*5115;
         in = put;
       }
-        System.out.println(msg[in].getTweetText());
+        reply = msg[in];
       // search for tweet with positive and take its text to post
     }
     /*
