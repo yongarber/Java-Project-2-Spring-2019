@@ -14,7 +14,12 @@ public class ChatRoom {
    * @return mean (average) mood of all the bots in this room
    */
   public static double getMoodMean(){
-    return 0;
+    double x =0;
+    for(int i =0;bots.length;i++){
+      x+=bots[i].getMood();
+    }
+    double avg =(x/bots.length);
+    return avg;
   }
 
   /**
@@ -22,7 +27,13 @@ public class ChatRoom {
    * @return the variance of the moods of all the bots in this room
    */
   public double getMoodVariance(){
-    return 0;
+    double y = getMoodMean();
+    double x = 0;
+    for(int i =0;bots.length;i++){
+      x+=Math.pow(y-bots[i].getMood(), 2);
+    }
+    double var = (x/bots.length);
+    return var;
   }
 
   /**
