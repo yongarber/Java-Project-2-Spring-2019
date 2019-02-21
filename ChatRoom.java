@@ -13,12 +13,14 @@ public class ChatRoom {
    * What is the mean (average) mood of all the bots in this room?
    * @return mean (average) mood of all the bots in this room
    */
-  public static double getMoodMean(){
+  public double getMoodMean(){
     double x =0;
-    for(int i =0;bots.length;i++){
-      x+=bots[i].getMood();
+    int count = 0;
+    for(ChatterBot bot : bots){
+      x+=bot.getMood();
+      count+=1;
     }
-    double avg =(x/bots.length);
+    double avg =(x/count);
     return avg;
   }
 
@@ -29,10 +31,12 @@ public class ChatRoom {
   public double getMoodVariance(){
     double y = getMoodMean();
     double x = 0;
-    for(int i =0;bots.length;i++){
-      x+=Math.pow(y-bots[i].getMood(), 2);
+    int count = 0;
+    for(ChatterBot bot : bots){
+      x+=Math.pow(y-bot.getMood(), 2);
+      count+=1;
     }
-    double var = (x/bots.length);
+    double var = (x/count);
     return var;
   }
 
@@ -41,13 +45,21 @@ public class ChatRoom {
    * @param msg The message to be posted.
    */
   public void postNewMessage(Message msg){
-
+  posts.add(msg);
   }
 
   /**
    * Update all the bots with messages that have been posted since the last round of updates.
    */
   public void updateBots(){
+  	int count=0;
+  	for(ChatterBot bot:bots){ // make a for loop inside a for loop so the bot is getting all of the posts.
+  		bot.update(posts);
+  		count+=1;
+  	}
+  	for(int i=0; i<=count; i++){
+	posts.remove(i);
+  	}
   }
 
   /**

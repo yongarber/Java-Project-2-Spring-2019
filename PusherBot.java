@@ -19,7 +19,7 @@ public class PusherBot extends ChatterBot{
 //   }
 
   public void post(){
-    double mod = ChatRoom.getMoodMean();
+    double mod = room.getMoodMean();
     Message reply = null;
     Random input = new Random();
     int in = input.nextInt()*5115;
