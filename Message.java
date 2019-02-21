@@ -49,7 +49,7 @@ public class Message{
     public String getTopic(){
       return this.topic;
     }
-    
+  
     public String getTweetText(){
       return this.tweetText;
     }

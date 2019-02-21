@@ -2,7 +2,7 @@ import java.util.Random;
 /**
  * a bot that only tweets about neutral things. Child class of ChatterBot.
  */
-public class PusherBot{
+public class PusherBot extends ChatterBot{
   private final int mod;
 
   /**
@@ -10,14 +10,14 @@ public class PusherBot{
    * @param  messages Neutral messages
    * @return          [description]
    */
-  public PusherBot(ChatRoom room){
-    super(room);
+  public PusherBot(Message[] messages, ChatRoom room){
+    super(messages, room);
     mod=0;
   }
-public PusherBot(int mod){
-    this.mod = mod;
-    
-  }
+// public PusherBot(int mod){
+//     this.mod = mod;
+//   }
+
   public void post(){
     double mod = ChatRoom.getMoodMean();
     Message reply = null;

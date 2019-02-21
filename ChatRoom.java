@@ -13,7 +13,7 @@ public class ChatRoom {
    * What is the mean (average) mood of all the bots in this room?
    * @return mean (average) mood of all the bots in this room
    */
-  public double getMoodMean(){
+  public static double getMoodMean(){
     return 0;
   }
 
