@@ -54,12 +54,12 @@ public class ChatRoom {
   public void updateBots(){
   	int count=0;
   	for(ChatterBot bot:bots){ // make a for loop inside a for loop so the bot is getting all of the posts.
-  		bot.update(posts);
+  		for(int i =0; i <= posts.size();i++){
+  		bot.update(posts.get(i));
+  	}
   		count+=1;
   	}
-  	for(int i=0; i<=count; i++){
-	posts.remove(i);
-  	}
+
   }
 
   /**
@@ -67,7 +67,13 @@ public class ChatRoom {
    * @return If new messages were posted during the last round of updates, return true, otherwise, false.
    */
   public boolean hasNewMessages(){
-    return false;
-  }
+  	if(posts.isEmpty()){
+  		return false;
+  	}
+   	for(int i =0; i <= posts.size();i++){
+		posts.remove(i);
+  	}
+  	return true;
 
+}
 }
