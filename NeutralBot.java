@@ -23,7 +23,7 @@ public class NeutralBot extends ChatterBot{
     // System.out.println(sentiment);
     if(mood > 1 && sentiment > 1)
       read = true;
-    else if(mood < 1 && sentiment < 1) // I thin those values should be changed to <= and >= but this is what Godwin did. because it doesnt go into the post.
+    else if(mood < 1 && sentiment < 1) // I think those values should be changed to <= and >= but this is what Godwin did. because it doesnt go into the read part.
     //and if I do change it I go into infinity loop inside the NeutralBot class.
       read = true;
     else if(sentiment == 1 && mood == 1)
