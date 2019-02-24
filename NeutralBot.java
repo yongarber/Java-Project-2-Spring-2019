@@ -21,9 +21,10 @@ public class NeutralBot extends ChatterBot{
     // System.out.println("amazing");
     // System.out.println(mood);
     // System.out.println(sentiment);
-    if(mood > 1 && sentiment >= 1)
+    if(mood > 1 && sentiment > 1)
       read = true;
-    else if(mood < 1 && sentiment <= 1)
+    else if(mood < 1 && sentiment < 1) // I thin those values should be changed to <= and >= but this is what Godwin did. because it doesnt go into the post.
+    //and if I do change it I go into infinity loop inside the NeutralBot class.
       read = true;
     else if(sentiment == 1 && mood == 1)
       read = true;
@@ -65,7 +66,7 @@ public class NeutralBot extends ChatterBot{
   public void post(){
     Message reply = null;
     Random input = new Random();
-    int in = (int)input.nextDouble()*5115;
+    int in = (int)(input.nextDouble()*5115);
     // Message[] msg = new Message[5114];
     // try{
     //   msg = MessageParser.parseMessages("full-corpus.csv");
@@ -80,19 +81,19 @@ public class NeutralBot extends ChatterBot{
       int inp = (int)(input.nextDouble()*5115);
       in = inp;
     }
-      reply = messages[in];
-    }
-    if(mood < 0.5){
-      while(messages[in].getSentiment() != 1){
+    reply = messages[in];
+  }
+    while(mood < 0.5){
+      while((messages[in].getSentiment() != 0)){
         int inpu = (int)(input.nextDouble()*5115);
         in = inpu;
       }
-        reply = messages[in];
+      reply = messages[in];
       // search for tweet with negative and take its text to post
     }
-    if(mood > 1.5){
-      while(messages[in].getSentiment() != 1){
-        int put = input.nextInt()*5115;
+    while(mood > 1.5){
+      while(messages[in].getSentiment() != 2){
+        int put = (int)(input.nextDouble()*5115);
         in = put;
       }
         reply = messages[in];
