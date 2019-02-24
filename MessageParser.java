@@ -23,8 +23,8 @@ public class MessageParser{
     String S2 = "\"negative\"";
     String S3 = "\"neutral\"";
     String[] strl= new String[5];
+    int i =0;
     while (reader.hasNext()){
-    	int i =0;
       //int posit = 0;
       //int negat = 0;
         String str = reader.nextLine();

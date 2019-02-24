@@ -15,17 +15,22 @@ public static void main(String[] args) throws Exception{
       GameBot[i] = new PusherBot(msg, RoomBot);
       }
       Random rand = new Random();
-      int number =(rand.nextInt())*5114;
+      int number =(int)(rand.nextDouble()*5114);
+      if(msg[number].getSentiment() == -1){
+        int num =(int)(rand.nextDouble()*5114);
+        number=num;
+      }
       RoomBot.postNewMessage(msg[number]); // randomly pick message and put it in the chatroom.
       //make a while loop-
       int count = 0;
       while((RoomBot.getMoodMean() < 0.1) || (RoomBot.getMoodMean() > 1.9) || count <1000){
         count+=1;
+        RoomBot.updateBots();
       }
-     System.out.print(RoomBot.Size());
-     System.out.print(count);
-     System.out.print(RoomBot.getMoodMean());
-     System.out.print(RoomBot.getMoodVariance());
+     System.out.println(RoomBot.Size());
+     System.out.println(count);
+     System.out.println(RoomBot.getMoodMean());
+     System.out.println(RoomBot.getMoodVariance());
   }catch (Exception e) {System.out.println(e); }
 }
 }

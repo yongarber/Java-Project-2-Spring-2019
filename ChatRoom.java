@@ -57,7 +57,7 @@ return posts.size();
   public void updateBots(){
   	int count=0;
   	for(ChatterBot bot:bots){ // make a for loop inside a for loop so the bot is getting all of the posts.
-  		for(int i =0; i <= posts.size();i++){
+  		for(int i =0; i < posts.size();i++){
   		bot.update(posts.get(i));
   	}
   		count+=1;

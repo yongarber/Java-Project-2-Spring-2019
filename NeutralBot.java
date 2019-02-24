@@ -18,10 +18,12 @@ public class NeutralBot extends ChatterBot{
   public void update(Message msg){
     boolean read = false;
     int sentiment = msg.getSentiment();
-
-    if(mood > 1 && sentiment > 1)
+    // System.out.println("amazing");
+    // System.out.println(mood);
+    // System.out.println(sentiment);
+    if(mood > 1 && sentiment >= 1)
       read = true;
-    else if(mood < 1 && sentiment < 1)
+    else if(mood < 1 && sentiment <= 1)
       read = true;
     else if(sentiment == 1 && mood == 1)
       read = true;
@@ -35,7 +37,6 @@ public class NeutralBot extends ChatterBot{
     Random rand = new Random();
     double replyChance = rand.nextDouble()*2.0;
     boolean post = false;
-
     if(mood > 1 && replyChance < mood)
       post = true;
     else if(mood < 1 && replyChance > mood)
@@ -64,37 +65,37 @@ public class NeutralBot extends ChatterBot{
   public void post(){
     Message reply = null;
     Random input = new Random();
-    int in = input.nextInt()*5115;
-    Message[] msg = new Message[5114];
-    try{
-      msg = MessageParser.parseMessages("full-corpus.csv");
-    }
-    catch(Exception e){
-      System.out.println("ERROR");
-    }
+    int in = (int)input.nextDouble()*5115;
+    // Message[] msg = new Message[5114];
+    // try{
+    //   msg = MessageParser.parseMessages("full-corpus.csv");
+    // }
+    // catch(Exception e){
+    //   System.out.println("ERROR");
+    // }
   // I dont know if the try and catch work here or not!!!!!
     while ((mood > 0.5) && (mood < 1.5)){
       //search for tweet with nuetral and take its text to post
-    while(msg[in].getSentiment() != 1){
-      int inp = input.nextInt()*5115;
+    while(messages[in].getSentiment() != 1){
+      int inp = (int)(input.nextDouble()*5115);
       in = inp;
     }
-      reply = msg[in];
+      reply = messages[in];
     }
     if(mood < 0.5){
-      while(msg[in].getSentiment() != 1){
-        int inpu = input.nextInt()*5115;
+      while(messages[in].getSentiment() != 1){
+        int inpu = (int)(input.nextDouble()*5115);
         in = inpu;
       }
-        reply = msg[in];
+        reply = messages[in];
       // search for tweet with negative and take its text to post
     }
     if(mood > 1.5){
-      while(msg[in].getSentiment() != 1){
+      while(messages[in].getSentiment() != 1){
         int put = input.nextInt()*5115;
         in = put;
       }
-        reply = msg[in];
+        reply = messages[in];
       // search for tweet with positive and take its text to post
     }
     /*

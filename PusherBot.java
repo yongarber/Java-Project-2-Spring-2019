@@ -19,33 +19,34 @@ public class PusherBot extends ChatterBot{
 //   }
 
   public void post(){
+      System.out.print("Check");
     double mod = room.getMoodMean();
     Message reply = null;
     Random input = new Random();
     int in = input.nextInt()*5115;
-    Message[] msg = new Message[5114];
-    try{
-      msg = MessageParser.parseMessages("full-corpus.csv");
-    }
-    catch(Exception e){
-      System.out.println("ERROR");
-    }
+    // Message[] msg = new Message[5114];
+    // try{
+    //   msg = MessageParser.parseMessages("full-corpus.csv");
+    // }
+    // catch(Exception e){
+    //   System.out.println("ERROR");
+    // }
   // I dont know if the try and catch work here or not!!!!!
     while(mod > 0) {
       //search for tweet with nuetral and take its text to post
-    while(msg[in].getSentiment() != 2){
+    while(messages[in].getSentiment() != 2){
       int inp = input.nextInt()*5115;
       in = inp;
     }
       mod += 0.1;
-      reply = msg[in];
+      reply = messages[in];
     }
     if(mod < 0){
-      while(msg[in].getSentiment() != 0 || msg[in].getSentiment()!= 1){
+      while(messages[in].getSentiment() != 0 || messages[in].getSentiment()!= 1){
         int inpu = input.nextInt()*5115;
         in = inpu;
       }
-        reply = msg[in];
+        reply = messages[in];
         mod -= 0.1;
       // search for tweet with negative and take its text to post
     }
