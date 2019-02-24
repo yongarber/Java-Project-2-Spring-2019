@@ -24,6 +24,9 @@ public class ChatRoom {
     return avg;
   }
 
+public double Size(){
+return posts.size();
+}
   /**
    * What is the variance of the moods of all the bots in this room?
    * @return the variance of the moods of all the bots in this room
