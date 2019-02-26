@@ -10,25 +10,20 @@ public class MessageParser{
    * @return          An array of parsed Message objects
    */
    public static void main(String[] args) throws Exception{
-   String filename = "full-corpus.csv"; // I dont know if this is needed
+   String filename = "full-corpus.csv";
    System.out.println(parseMessages(filename));
 }
   public static Message[] parseMessages(String filename) throws Exception {
     Message[] messages = new Message[5114];
-    //Message[] positive = new Message[519];
-    //Message[] negative = new Message[572];
-    Scanner reader = new Scanner(new File(filename));
-    int temp = 1;
+    Scanner reader = new Scanner(new File(filename)); // read the file using scanner
+    int temp = 1; // This all structure under is built to check for the sentiment as a string and return an integer.
     String S1 = "\"positive\"";
     String S2 = "\"negative\"";
     String S3 = "\"neutral\"";
     String[] strl= new String[5];
     int i =0;
     while (reader.hasNext()){
-      //int posit = 0;
-      //int negat = 0;
         String str = reader.nextLine();
-        //str.replaceAll("\"", "");
         strl= str.split(",");
         if(strl[1].equals(S1)){
           temp=2;}
@@ -36,20 +31,10 @@ public class MessageParser{
           temp=0;}
         if(strl[1].equals(S3)){
           temp=1;}
-        Message msg = new Message(strl[0],temp,strl[2],strl[3],strl[4]);
-        messages[i] = msg;
-        // if(temp==0){
-        //   positive[posit]=msg;
-        //   posit+=1;}
-        // if(temp==0){
-        //   negative[negat]=msg;
-        //   negat+=1;}
-        //mess[i]=(reader.nextLine()); //We have issue with converting string to Message!
+        Message msg = new Message(strl[0],temp,strl[2],strl[3],strl[4]); // here we take each string's index after the split and put it in the right place inside a message (except the integer in which I use temp).
+        messages[i] = msg;// put each message in an index in the message array.
         i+=1;
     }
-    /*
-    Insert your code to read the file here. All of the classes that you may need are imported already, though you may take other approaches.
-     */
 
     return messages;
 

@@ -16,7 +16,7 @@ public class ChatRoom {
   public double getMoodMean(){
     double x =0;
     int count = 0;
-    for(ChatterBot bot : bots){
+    for(ChatterBot bot : bots){// I get the mood from each bot using each-loop, adds them all up and take the average.
       x+=bot.getMood();
       count+=1;
     }
@@ -31,7 +31,7 @@ return posts.size();
    * What is the variance of the moods of all the bots in this room?
    * @return the variance of the moods of all the bots in this room
    */
-  public double getMoodVariance(){
+  public double getMoodVariance(){// I use the getMoodMean function to get the mean and then I gust followed the formula to calculate the variance.
     double y = getMoodMean();
     double x = 0;
     int count = 0;
@@ -47,7 +47,7 @@ return posts.size();
    * Accept a new message for posting in the next round of updates
    * @param msg The message to be posted.
    */
-  public void postNewMessage(Message msg){
+  public void postNewMessage(Message msg){// just adds a new msg to the list array of posts.
   posts.add(msg);
   }
 
@@ -56,7 +56,7 @@ return posts.size();
    */
   public void updateBots(){
   	int count=0;
-  	for(ChatterBot bot:bots){ // make a for loop inside a for loop so the bot is getting all of the posts.
+  	for(ChatterBot bot:bots){ // gives each bot in the chatterBot all the posts-updates the bots
   		for(int i =0; i < posts.size();i++){
   		bot.update(posts.get(i));
   	}
@@ -69,7 +69,8 @@ return posts.size();
    * Were messages posted during the last round of updates?
    * @return If new messages were posted during the last round of updates, return true, otherwise, false.
    */
-  public boolean hasNewMessages(){
+  public boolean hasNewMessages(){// hasNewMessages comes after updateBots to check if something was updated
+    //so I check if the posts array is empty and if it is not I know that there were new posting because I remove the posts after each check. 
   	if(posts.isEmpty()){
   		return false;
   	}

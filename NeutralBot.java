@@ -18,13 +18,10 @@ public class NeutralBot extends ChatterBot{
   public void update(Message msg){
     boolean read = false;
     int sentiment = msg.getSentiment();
-    // System.out.println("amazing");
-    // System.out.println(mood);
-    // System.out.println(sentiment);
     if(mood > 1 && sentiment > 1)
       read = true;
     else if(mood < 1 && sentiment < 1) // I think those values should be changed to <= and >= but this is what Godwin did. because it doesnt go into the read part.
-    //and if I do change it I go into infinity loop inside the NeutralBot class.
+    //and if I do change it I go into infinity loop inside the NeutralBot class and the post method (in the while loop section).
       read = true;
     else if(sentiment == 1 && mood == 1)
       read = true;
@@ -66,25 +63,17 @@ public class NeutralBot extends ChatterBot{
   public void post(){
     Message reply = null;
     Random input = new Random();
-    int in = (int)(input.nextDouble()*5115);
-    // Message[] msg = new Message[5114];
-    // try{
-    //   msg = MessageParser.parseMessages("full-corpus.csv");
-    // }
-    // catch(Exception e){
-    //   System.out.println("ERROR");
-    // }
-  // I dont know if the try and catch work here or not!!!!!
+    int in = (int)(input.nextDouble()*5115);// in order to post I want to have positive, negative, and neutral posts- so what I did was
+    // to keep randomize until I get neutral, positive, or negative bot for each while loop- another option was to make a list array with the positive, neutral, negative, and all the messages in the MessageParser class.
     while ((mood > 0.5) && (mood < 1.5)){
-      //search for tweet with nuetral and take its text to post
-    while(messages[in].getSentiment() != 1){
-      int inp = (int)(input.nextDouble()*5115);
+    while(messages[in].getSentiment() != 1){ // it checks if the sentiment is not neutral- if it is not so it randomize the msg until we get neutral msg.
+      int inp = (int)(input.nextDouble()*5115);//search for tweet with nuetral and post it
       in = inp;
     }
     reply = messages[in];
   }
     while(mood < 0.5){
-      while((messages[in].getSentiment() != 0)){
+      while((messages[in].getSentiment() != 0)){// the smae process happens here for the Negative posts (check if negative and if not it randomize)
         int inpu = (int)(input.nextDouble()*5115);
         in = inpu;
       }
@@ -93,7 +82,7 @@ public class NeutralBot extends ChatterBot{
     }
     while(mood > 1.5){
       while(messages[in].getSentiment() != 2){
-        int put = (int)(input.nextDouble()*5115);
+        int put = (int)(input.nextDouble()*5115);// the same process as above.
         in = put;
       }
         reply = messages[in];
